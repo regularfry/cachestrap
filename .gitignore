@@ -1,0 +1,4 @@
+debian/cachestrap.debhelper.log
+debian/cachestrap.substvars
+debian/cachestrap/
+debian/files
