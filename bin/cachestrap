@@ -6,6 +6,9 @@ set -u
 SUITE=$1
 DIR=$2
 
+shift
+shift
+
 
 CACHE_DIR=/var/cache/cachestrap
 CACHE_FILE=${CACHE_DIR}/${SUITE}.tar
@@ -14,7 +17,7 @@ if [ ! -f "${CACHE_FILE}" ]; then
   ( 
     mkdir -p ${CACHE_DIR}
     cd ${CACHE_DIR}
-    debootstrap $@
+    debootstrap ${SUITE} ${SUITE} $@
     tar -cf ${CACHE_FILE} -C ${SUITE} .
     rm -rf ${SUITE}
   )

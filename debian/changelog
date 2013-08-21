@@ -1,3 +1,9 @@
+cachestrap (0.0.2) unstable; urgency=low
+
+  * Use the suite name for the debootstrap dir
+
+ -- Alex Young <alex@blackkettle.org>  Wed, 21 Aug 2013 14:54:45 +0100
+
 cachestrap (0.0.1) unstable; urgency=low
 
   * Initial Release.
