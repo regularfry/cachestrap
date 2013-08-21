@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+set -u
+
+SUITE=$1
+DIR=$2
+
+
+CACHE_DIR=/var/cache/cachestrap
+CACHE_FILE=${CACHE_DIR}/${SUITE}.tar
+
+if [ ! -f "${CACHE_FILE}" ]; then
+  ( 
+    mkdir -p ${CACHE_DIR}
+    cd ${CACHE_DIR}
+    debootstrap $@
+    tar -cf ${CACHE_FILE} -C ${SUITE} .
+    rm -rf ${SUITE}
+  )
+fi
+
+mkdir -p ${DIR}
+tar xf ${CACHE_FILE} -C ${DIR}
